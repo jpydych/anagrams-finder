@@ -12,6 +12,7 @@
 typedef uint64_t WordMask;
 
 inline std::string sort_letters(std::string word) {
+    // TODO: Replace with some sort of quicksort
     std::string result = "";
     int len = word.length();
 

@@ -18,8 +18,11 @@ void Solver::solve(Word target) {
     auto searched = 0;
 #endif
 
+    auto found = 0;
+
     for (const auto& word1 : words) {
         if ((target.mask & word1.mask) == word1.mask) {
+            // TODO: Improve this step of the algorithm using a hash table to reduce the computational complexity to O(n)
             for (const auto& word2 : words) {
                 if (word1.word == word2.word) {
                     continue;
@@ -30,6 +33,8 @@ void Solver::solve(Word target) {
 
                     if (sort_letters(sum) == targetId) {
                         cout << word1.word << " " << word2.word << endl;
+
+                        found++;
                     }
                 }
 
@@ -52,4 +57,6 @@ void Solver::solve(Word target) {
               time/std::chrono::milliseconds(1) << "ms to run. " <<
               searched << " words searched." << endl;
 #endif
+
+    std::cout << found << " solutions found." << endl;
 }
